@@ -1,0 +1,226 @@
+strategy_task:
+  description: >
+    Analyze the content strategy for the keyword '{keyword}' targeting the country '{country}' for the brand Speedbots.
+    Use the content strategy knowledge base to:
+    1. Identify which content cluster this keyword belongs to (service hub, country page, industry page, or solution page).
+    2. Select the correct internal links to include (2-5 links pointing to the parent cluster page and related solution pages).
+       IMPORTANT: If the user supplied custom internal links ({internal_links}), use EXACTLY those links and do NOT
+       invent or add any others. If the user's list is empty, do NOT include any internal links at all.
+     3. Generate the SEO title. It must contain the PRIMARY KEYWORD naturally plus a clear benefit
+      or topic, e.g. "AI Automation: Benefits, Use Cases & Business Solutions". Format:
+      "{Primary Keyword}: {Benefit / Topic}". Mention the PRIMARY KEYWORD exactly once and
+      naturally (never repeat it multiple times), then a benefit/value (Benefits, Use Cases,
+      Cost Savings, Guide, Checklist, etc.). The brand "| Speedbots" is optional and only if
+      it fits. The title must be 3 to 55 characters (including spaces). Only the country
+      '{country}' may be mentioned if a location is included. NEVER write "solutions in" style
+      titles like "{keyword} solutions in {country}".
+     4. Generate the meta description (roughly 150-160 characters). Structure: "primary keyword +
+      what the content covers + benefit/value + optional call to action". It must NATURALLY include
+      the PRIMARY KEYWORD exactly once (never repeat or stuff the keyword), clearly describe what
+      the blog covers and its value, and be useful to the reader. Do NOT copy the blog's first
+      sentence, do NOT mislead, and only mention the country '{country}' if it is relevant to the
+      page. Example for keyword "AI automation": "Discover how AI automation helps businesses
+      streamline repetitive tasks, improve productivity, and build more efficient workflows.
+      Explore practical use cases and solutions."
+     5. STRICT RULE: The SEO title and meta description may ONLY mention the country '{country}'.
+        They must NEVER contain Malaysia, Singapore, Australia, India, or any other country or
+        city name. Use exactly '{country}' and no other location name.
+     6. Define the content angle (e.g., cost-focused, ROI-focused, workflow-focused).
+     7. Identify the target audience.
+  expected_output: >
+    A JSON object with exactly these fields:
+    - title (string, max 60 chars)
+    - meta_description (string, max 160 chars)
+    - cluster (string: service_hub / country_page / industry_page / solution_page)
+    - internal_links (array of 2-5 URL strings)
+    - countries (array of target country names, ONLY [{country}])
+    - content_angle (string)
+    - target_audience (string)
+  agent: strategy_planner
+  output_file: output/reports/strategy.json
+
+research_task:
+  description: >
+    Research the topic '{keyword}' for the target market {country} using the internal link strategy and country context.
+    Gather:
+    1. Current industry statistics (specific numbers, not generic claims) — processing times, error rates, cost savings.
+    2. Competitor content analysis — what competitors write about this topic and where content gaps exist.
+    3. Regional data for {country}: tax compliance rules (SST/GST/BAS), popular accounting tools, currency pricing ranges.
+    4. Real-world workflow examples — before/after automation scenarios with specific metrics.
+    5. A believable case study data point (company type, problem, solution, measurable results).
+    Use the country context knowledge base for regional specifics.
+  expected_output: >
+    A research brief in markdown with sections for:
+    - Key Statistics (with source or marked as estimate)
+    - Financial Workflow Details
+    - Regional Context for {country} (compliance, pricing in correct currency)
+    - Real Workflow Examples (before/after)
+    - Case Study Data
+    - Competitor Content Gaps
+  agent: research_analyst
+  output_file: output/reports/research.md
+
+image_task:
+  description: >
+    Create ONE high-quality, refined AI hero image for the blog post about '{keyword}' for
+    the {country} market. Use the strategy output (SEO title, content angle, target audience)
+    and research brief for context so the image matches the article.
+    Call the image_generator tool EXACTLY ONCE with:
+    - prompt: a detailed, high-end professional marketing photo prompt describing the topic
+      '{keyword}'. Describe lighting, perspective, color palette and mood (e.g. "bright modern
+      finance office, an accountant at a clean desk with a glowing automation dashboard,
+      soft cinematic lighting, shallow depth of field, teal and navy corporate palette,
+      photorealistic, 8k detail"). NO text, NO words, NO letters, NO logos, NO watermark.
+      Suitable for a blog hero image. The tool auto-enhances the prompt for quality.
+    - filepath: output/images/{keyword_slug}.png
+  expected_output: >
+    The full file path of the saved image (e.g. output/images/{keyword_slug}.png) as returned
+    by the tool.
+  agent: image_artist
+
+writing_task:
+  description: >
+    CRITICAL — You are the BLOG WRITER. You MUST produce the actual SEO blog post, NOT a
+    research brief, NOT an outline, NOT a summary. Your ONLY output file is
+    output/blogs/{keyword_slug}.txt and it MUST be the complete blog in this exact format.
+
+    Write a complete blog post about '{keyword}' for the {country} market using the strategy output
+    (title, meta description, internal links) and the research brief. Follow the Speedbots 9-step
+    article structure exactly. Each section covers the specified content but uses a NATURAL
+    heading (never the literal labels "Direct Answer", "Business Problem", etc.):
+
+    Top block (before the first heading):
+    - SEO TITLE: "{Primary Keyword}: {Benefit / Topic}" — the PRIMARY KEYWORD appears naturally,
+      exactly ONCE, followed by a clear benefit/topic (e.g. "AI Automation: Benefits, Use Cases
+      & Business Solutions"). Optional brand "| Speedbots". MUST be 3 to 55 characters. Only the
+      country '{country}' may appear if a location is included. Never "{keyword} solutions in
+      {country}" style titles.
+    - META DESCRIPTION: roughly 150-160 characters, structure "primary keyword (naturally, ONCE)
+      + what the content covers + benefit/value + optional CTA". Do NOT repeat the keyword, do NOT
+      copy the blog's first sentence, and only mention the country '{country}' if it is relevant.
+      Example: "Discover how AI automation helps businesses streamline repetitive tasks, improve
+      productivity, and build more efficient workflows. Explore practical use cases and solutions."
+    - CTA BUTTONS: 2 specific buttons
+    STRICT RULE: The SEO TITLE and META DESCRIPTION may ONLY mention the country '{country}'.
+    NEVER write Malaysia, Singapore, Australia, India or any other country/city name in these
+    two lines — use exactly '{country}' and no other location.
+
+    1. Heading "WHAT IS {keyword}" in ALL CAPS (replace {keyword} with the topic, capitalized) — 80-120 words.
+       Define the topic, include the primary keyword, mention Speedbots, state the value proposition.
+    2. Heading "THE HIDDEN COST OF MANUAL PROCESSES" — 300-500 words.
+       3-4 manual pain points with specific numbers (invoices per month, hours wasted, error rates).
+       Use bullets. End positioning Speedbots as the fix.
+    3. Heading "BEFORE AND AFTER: HOW AUTOMATION CHANGES YOUR WORKFLOW" — 400-600 words.
+       2-3 workflows, each with "Before automation" (manual steps) and "After automation with
+       Speedbots" (automated steps), ending with time-saved metrics. Include an internal link.
+    4. Heading "HOW TO GET STARTED IN 6 STEPS" — 300-500 words.
+       6 numbered steps, step 1 is "Audit your current process." Include an internal link in step 3.
+    5. Heading "WHAT YOU PAY VS WHAT YOU SAVE" — 200-400 words.
+       Cost breakdown (setup, subscription, per invoice) vs savings. End with net savings and
+       payback period. Use the correct currency for {country}.
+    6. Heading "STAYING IN CONTROL: RISKS AND SAFEGUARDS" — 200-400 words.
+       5 risks, each with a mitigation. Cover data accuracy, routing errors, integration failures,
+       compliance, staff resistance.
+    7. Heading "REAL RESULTS FROM {country} BUSINESSES" — 200-300 words.
+       Realistic company example with specific metrics (time reduction, error rate change, savings).
+       Keep results believable.
+    8. Heading "FREQUENTLY ASKED QUESTIONS" — 300-500 words.
+       6-8 numbered Q:/A: pairs. Answers specific to Speedbots capabilities.
+    9. Heading "START AUTOMATING YOUR PROCESSES" — 50-100 words.
+       Specific CTA, e.g. "Book a free workflow assessment" or "Schedule a demo" — never generic
+       "contact us". Include the country-specific internal links from the strategy.
+
+    Use the internal links from the strategy where specified.
+    CUSTOM LINKS RULE: The user's internal links are: {internal_links}
+    - If {internal_links} is NOT empty: use ONLY and EXACTLY those full URLs inside the page
+      content (distribute across intro, workflows, steps, and CTA sections). ABSOLUTELY NO other
+      internal links anywhere in the page content.
+      URLs are CASE-SENSITIVE: copy each link VERBATIM with the exact uppercase/lowercase
+      letters the user typed (e.g. keep "Ai-Invoice" exactly as-is). Do not lowercase, uppercase,
+      or otherwise change the link text.
+    - If {internal_links} IS empty: write the blog with NO internal links at all —
+      omit every internal link everywhere in the page content.
+    MANDATORY: Every supplied internal link MUST appear at least once somewhere in the
+    page content body — write the full https:// URL text directly into the prose (e.g.
+    "visit https://speedbots.com/ai-invoice-processing for details"). Do NOT skip, shorten,
+    or append links only at the end of the blog.
+    Always use full clickable https:// URLs that redirect.
+    Target 2000-3000 words total. Use the research brief for accurate statistics.
+    Use the research brief for accurate statistics and regional context.
+    IMPORTANT: Output as PLAIN TEXT — no markdown symbols (#, *, [], ```, ---).
+    Use ALL CAPS section headings on their own line. Blank lines between paragraphs.
+    Dashes (-) for bullets. Numbers (1. 2. 3.) for ordered lists.
+    Write like a human expert. Short sentences. Avoid all AI-sounding phrases from the banned list.
+
+    OUTPUT VALIDATION — BEFORE YOU FINISH:
+    - The file output/blogs/{keyword_slug}.txt MUST start with the line "SEO TITLE: ...".
+    - It MUST contain a "META DESCRIPTION:" line and a "CTA BUTTONS:" line right after.
+    - It MUST be the actual blog article (all 9 sections), NEVER the research brief.
+    Do NOT write the research brief, statistics tables, or competitor analysis into the blog file.
+  expected_output: >
+    A complete blog post in plain text format (.txt) with:
+    - SEO TITLE, META DESCRIPTION, and CTA BUTTONS at the top
+    - All 9 sections, each with a NATURAL all-caps heading (never the literal formula labels)
+    - Plain URLs for internal links in the workflows, steps, and CTA sections
+    - A final FAQ section and closing CTA
+  agent: content_writer
+  output_file: output/blogs/{keyword_slug}.txt
+
+seo_task:
+  description: >
+    AUDIT the EXISTING blog post about '{keyword}' for on-page SEO and produce a concise report.
+    The blog is in plain text format (.txt) with ALL CAPS section headings.
+
+    IMPORTANT — HOW TO WORK (FAST, REPORT ONLY):
+    - The blog text is provided in your context. Do NOT rewrite, regenerate, or output the blog.
+    - Review the 8 items below against the blog and report PASS/FAIL for each.
+    - For FAILED items, state the fix in ONE short line (e.g. the corrected title or meta text).
+    - Output ONLY the concise SEO report (no corrected blog, no research, no prose).
+
+    Validate these 8 items:
+    1. Title tag — must end with "| Speedbots" and be under 60 characters.
+    2. Meta description — must be 150-160 characters and include services, benefit, and countries.
+    3. Keyword density — primary keyword should appear 1-2% of total words (not stuffed).
+    4. Internal links — CUSTOM LINKS RULE: The user's internal links are: {internal_links}.
+       If {internal_links} is NOT empty, the ONLY internal links allowed in the blog are exactly
+       those URLs; remove any others and DO NOT add links from the strategy. If it IS empty, the
+       blog must contain NO internal links at all. URLs are CASE-SENSITIVE — keep each link
+       verbatim with the exact casing the user typed.Build the report by spotting whether such
+       links appear in the blog; do not alter the blog text.
+    5. Heading hierarchy — exactly one main heading, logical section headings with a heading for every content section.
+    6. AI-sounding phrases — list any from the banned list found in the blog.
+    7. FAQ — 6-8 questions formatted properly.
+    8. Readability — sentences should be clear, use short paragraphs.
+  expected_output: >
+    ONLY a concise SEO report in exactly this format (no corrected blog):
+    SEO REPORT
+    - Title tag: <length> chars — PASS/FAIL (if FAIL: corrected title in one line)
+    - Meta description: <length> chars — PASS/FAIL (if FAIL: corrected meta in one line)
+    - Keyword density: <X%> — PASS/FAIL
+    - Internal links: <count> links, <status> — PASS/FAIL
+    - Heading hierarchy: <status> — PASS/FAIL
+    - AI phrases found and replaced: <list or none> — PASS/FAIL
+    - FAQ count: <count> — PASS/FAIL
+  agent: seo_optimizer
+  output_file: output/reports/seo_report.txt
+
+review_task:
+  description: >
+    Perform the final quality review of the blog post about '{keyword}'.
+    Verify:
+    1. All article formula sections are present and complete (SEO frontmatter, intro/H1, problem,
+       capabilities, integrations, AI section, built around, industries, control, CTA, why choose,
+       closing CTA, FAQ).
+    2. Every content section has a proper heading (ALL CAPS heading for major sections, sub-headings for capabilities).
+    3. Internal links point to the correct cluster pages.
+    4. The CTA is specific (workflow assessment, cost estimate, or demo — not generic "contact us").
+    5. Content is localized for {country} (correct currency, tax system, tools).
+    6. Statistics are specific (not vague claims).
+    7. No AI-sounding phrases remain.
+  expected_output: >
+    A review report with:
+    - Verification checklist (all article sections PASS/FAIL with notes)
+    - Final content quality score (e.g., 9.2/10)
+    - Approved/rejected recommendation
+  agent: quality_reviewer
+  output_file: output/reports/quality_review.md

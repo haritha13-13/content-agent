@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generating... | Speedbots</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: #0f172a;
+    }
+    .card {
+      background: #ffffff; width: 100%; max-width: 560px; border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35); padding: 40px; text-align: center;
+    }
+    .spinner {
+      width: 56px; height: 56px; margin: 24px auto; border-radius: 50%;
+      border: 5px solid #dbeafe; border-top-color: #2563eb;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h1 { font-size: 22px; }
+    p.sub { color: #64748b; margin-top: 8px; font-size: 15px; }
+    .steps { margin-top: 20px; text-align: left; font-size: 14px; color: #334155; }
+    .steps div { padding: 6px 0; }
+    .steps .done { color: #16a34a; }
+    .steps .active { color: #2563eb; font-weight: 700; }
+    .steps .wait { color: #cbd5e1; }
+    .error-box {
+      margin-top: 20px; background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c;
+      padding: 12px; border-radius: 8px; font-size: 14px; white-space: pre-wrap; display: none;
+    }
+    a.back { display: inline-block; margin-top: 24px; color: #2563eb; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Generating your blog...</h1>
+    <p class="sub"><strong>{{ job.keyword }}</strong> · {{ job.country }}</p>
+    <div class="spinner"></div>
+    <p class="sub" id="elapsed">0s elapsed — works on average takes 3–8 minutes</p>
+
+    <div class="steps">
+      <div id="s1" class="wait">1. Strategy planning (choose links, title, meta)</div>
+      <div id="s2" class="wait">2. Research (stats, workflows, regional data)</div>
+      <div id="s3" class="wait">3. Writing the blog</div>
+      <div id="s4" class="wait">4. SEO optimization (8-point check)</div>
+      <div id="s5" class="wait">5. Final quality review</div>
+    </div>
+
+    <div class="error-box" id="error"></div>
+    <a class="back" href="/">Cancel and go back</a>
+  </div>
+
+  <script>
+    const jobId = "{{ job_id }}";
+    const start = Date.now();
+    const stepEls = [document.getElementById('s1'), document.getElementById('s2'),
+                     document.getElementById('s3'), document.getElementById('s4'),
+                     document.getElementById('s5')];
+
+    function tick() {
+      const secs = Math.floor((Date.now() - start) / 1000);
+      document.getElementById('elapsed').textContent =
+        secs + 's elapsed — normally takes 3–8 minutes';
+    }
+    setInterval(tick, 1000);
+
+    async function poll() {
+      try {
+        const res = await fetch('/api/status/' + jobId);
+        const data = await res.json();
+        if (data.status === 'done') {
+          window.location.href = '/result/' + jobId;
+          return;
+        }
+        if (data.status === 'error') {
+          document.querySelector('.spinner').style.display = 'none';
+          const box = document.getElementById('error');
+          box.style.display = 'block';
+          box.textContent = 'Error: ' + (data.error || 'Unknown error');
+          return;
+        }
+        const running = new Date() - start;
+        if (running > 4000) mark(0);
+        if (running > 60000) mark(1);
+        if (running > 120000) mark(2);
+        if (running > 240000) mark(3);
+        if (running > 300000) mark(4);
+      } catch (err) {}
+    }
+    function mark(i) {
+      for (let k = 0; k <= i; k++) {
+        stepEls[k].classList.remove('wait');
+        stepEls[k].classList.add('done');
+      }
+      if (i < 4 && stepEls[i + 1]) {
+        stepEls[i + 1].classList.remove('wait');
+        stepEls[i + 1].classList.add('active');
+      }
+    }
+    setInterval(poll, 4000);
+    poll();
+  </script>
+</body>
+</html>

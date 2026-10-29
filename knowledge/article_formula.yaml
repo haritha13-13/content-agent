@@ -1,0 +1,93 @@
+sections:
+  1_what_is:
+    heading: "WHAT IS {TOPIC NAME}?"
+    word_count: "80-120"
+    purpose: "Direct answer - define the topic, include keyword, state value proposition"
+    instructions: >
+      Start with a clear definition of the topic. Mention Speedbots. Include the primary
+      keyword naturally. State the key benefit (time saved, errors reduced, cost cut).
+
+  2_business_problem:
+    heading: "THE HIDDEN COST OF MANUAL PROCESSES"
+    word_count: "300-500"
+    purpose: "Describe 3-4 manual pain points with specific numbers so the reader feels the pain"
+    format: "bullet list of pain points, each with a real scenario or number"
+    instructions: >
+      Use relatable scenarios with specific numbers (invoices per month, hours wasted, error
+      rates, RM/SGD/AUD/INR amounts). Make the reader feel the pain. End with a line that
+      positions Speedbots as the fix.
+      DO NOT use the literal heading "Business Problem".
+
+  3_real_workflows:
+    heading: "BEFORE AND AFTER: HOW AUTOMATION CHANGES YOUR WORKFLOW"
+    word_count: "400-600"
+    purpose: "Show before/after automation workflows with metrics"
+    format: "numbered steps for before and after, with time saved metrics"
+    instructions: >
+      Show at least 2 workflows. Each has "Before automation" (manual steps) and "After
+      automation with Speedbots" (automated steps). End each with time-saved metrics.
+      Include an internal link to the relevant solution page.
+      DO NOT use the literal heading "Real-World Workflows".
+
+  4_implementation_steps:
+    heading: "HOW TO GET STARTED IN 6 STEPS"
+    word_count: "300-500"
+    purpose: "Step-by-step guide to implement"
+    format: "numbered steps 1-6"
+    instructions: >
+      6 practical steps. Step 1 is always "Audit your current process." Step 3 is always the
+      highest-ROI entry point. Mention specific tools (Xero, QuickBooks, MYOB) where relevant.
+      Include an internal link in Step 3.
+      DO NOT use the literal heading "Implementation Steps".
+
+  5_cost_factors:
+    heading: "WHAT YOU PAY VS WHAT YOU SAVE"
+    word_count: "200-400"
+    purpose: "Cost table and savings breakdown"
+    format: "two lists/tables: what you pay and what you save"
+    instructions: >
+      Cover component costs (setup, subscription, per-invoice). Then what the business saves.
+      End with net savings and payback period. Use the correct currency for the target country.
+      DO NOT use the literal heading "Cost Factors".
+
+  6_risks_controls:
+    heading: "STAYING IN CONTROL: RISKS AND SAFEGUARDS"
+    word_count: "200-400"
+    purpose: "Build trust by covering risks and how they are handled"
+    format: "Risk: [name] + Safeguard: [solution]"
+    instructions: >
+      5 risks minimum, each with a clear mitigation. Builds trust. Cover: data accuracy,
+      routing errors, integration failures, compliance, staff resistance.
+      DO NOT use the literal heading "Risks and Controls".
+
+  7_case_example:
+    heading: "REAL RESULTS FROM {COUNTRY_NAME} BUSINESSES"
+    word_count: "200-300"
+    purpose: "Realistic company example with specific metrics"
+    format: "Company detail + Problem + Solution + Results"
+    instructions: >
+      Use a realistic company (manufacturer, firm, etc.). Include specific metrics:
+      processing time reduction, error rate change, cost savings. Keep results believable.
+      DO NOT use the literal heading "Case Example".
+
+  8_faq:
+    heading: "FREQUENTLY ASKED QUESTIONS"
+    word_count: "300-500"
+    purpose: "6-8 questions and answers"
+    format: "numbered Q: / A: pairs"
+    instructions: >
+      6-8 questions. Cover: definition, does it replace people, multi-currency, tax compliance,
+      implementation time, data security, existing software integration, error handling.
+      Answers specific to Speedbots capabilities.
+
+  9_cta:
+    heading: "START AUTOMATING YOUR PROCESSES"
+    word_count: "50-100"
+    purpose: "Specific call to action"
+    format: "Book a [specific action] - never 'contact us'"
+    instructions: >
+      CTA must be specific: "Book a free workflow assessment" or "Get your cost estimate" or
+      "Schedule a demo". State what the user gets (mapped process, identified opportunities,
+      exact ROI). Never use generic "contact us" or "learn more".
+
+total_word_count: "2000-3000"

@@ -1,0 +1,58 @@
+countries:
+  malaysia:
+    name: "Malaysia"
+    currency: "MYR"
+    tax_system: "SST (Sales and Services Tax)"
+    sst_rate: "6% services, 10% goods"
+    popular_accounting_tools: ["Xero", "QuickBooks", "MYOB", "SQL"]
+    business_language: "English and Malay"
+    key_cities: ["Kuala Lumpur", "Penang", "Johor Bahru", "Ipoh"]
+    compliance_notes: >
+      SST registration required for businesses with annual revenue above RM 500,000.
+      E-invoicing mandated by LHDN starting August 2024.
+    average_accountant_salary: "RM 4,000 - RM 8,000/month"
+    invoice_processing_cost: "RM 4,000 - RM 6,000/month for 200 invoices"
+
+  singapore:
+    name: "Singapore"
+    currency: "SGD"
+    tax_system: "GST (Goods and Services Tax)"
+    gst_rate: "9% (as of 2024)"
+    popular_accounting_tools: ["Xero", "QuickBooks", "SAP", "MYOB"]
+    business_language: "English"
+    key_cities: ["Singapore City"]
+    compliance_notes: >
+      GST registration mandatory for businesses with annual revenue above SGD 1 million.
+      Invoice requirements under IRAS guidelines.
+    average_accountant_salary: "SGD 4,500 - SGD 9,000/month"
+    invoice_processing_cost: "SGD 5,000 - SGD 8,000/month for 200 invoices"
+
+  australia:
+    name: "Australia"
+    currency: "AUD"
+    tax_system: "GST + BAS (Business Activity Statement)"
+    gst_rate: "10%"
+    popular_accounting_tools: ["Xero", "QuickBooks", "MYOB", "SAP"]
+    business_language: "English"
+    key_cities: ["Sydney", "Melbourne", "Brisbane", "Perth"]
+    compliance_notes: >
+      BAS lodgement quarterly for most businesses.
+      Single Touch Payroll (STP) Phase 2 mandatory.
+      Superannuation guarantee at 11.5%.
+    average_accountant_salary: "AUD 65,000 - AUD 95,000/year"
+    invoice_processing_cost: "AUD 6,000 - AUD 10,000/month for 200 invoices"
+
+  coimbatore:
+    name: "Coimbatore (Tamil Nadu)"
+    currency: "INR"
+    tax_system: "GST (Goods and Services Tax)"
+    gst_rate: "18% standard, 12% and 5% for specific goods"
+    popular_accounting_tools: ["Tally", "Zoho Books", "QuickBooks", "Xero"]
+    business_language: "English and Tamil"
+    key_cities: ["Coimbatore", "Chennai", "Madurai"]
+    compliance_notes: >
+      GST invoicing as per GSTN guidelines.
+      E-invoicing mandatory for businesses with turnover above INR 5 crore.
+      TDS compliance under Income Tax Act.
+    average_accountant_salary: "INR 25,000 - INR 50,000/month"
+    invoice_processing_cost: "INR 30,000 - INR 60,000/month for 200 invoices"

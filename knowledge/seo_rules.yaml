@@ -1,0 +1,48 @@
+title_format: "{primary_keyword} | {secondary_keyword} | {brand_name}"
+title_max_length: 60
+title_rules:
+  - "Primary keyword must appear first"
+  - "Brand name (Speedbots) always last"
+  - "Use pipe separators"
+  - "No special characters"
+
+meta_description_format: "{brand} provides {service_1}, {service_2}, and {service_3} to {benefit} across {country_1}, {country_2}, and {country_3}"
+meta_description_max_length: 160
+meta_description_rules:
+  - "Brand name first"
+  - "List 2-3 services"
+  - "State the benefit (streamline, automate, optimize)"
+  - "End with target countries"
+  - "No keyword stuffing"
+
+keyword_density:
+  primary: "1-2%"
+  secondary: "0.5-1%"
+
+heading_hierarchy:
+  h1: "Exactly one, contains primary keyword"
+  h2: "Major sections (8-10 per post)"
+  h3: "Subsections within H2s"
+
+internal_links:
+  min_per_post: 2
+  max_per_post: 5
+  must_link_to: "parent cluster page"
+
+faq_schema: true
+
+ai_phrases_to_avoid:
+  - "In today's fast-paced world"
+  - "Leveraging cutting-edge"
+  - "Revolutionary"
+  - "Game-changing"
+  - "Unlock the power"
+  - "Seamlessly integrate"
+  - "At the end of the day"
+  - "It's worth noting that"
+  - "Furthermore"
+  - "Moreover"
+  - "In conclusion"
+  - "Harness the power"
+  - "Unlocking the potential"
+  - "A comprehensive solution"

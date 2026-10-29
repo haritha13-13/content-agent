@@ -1,0 +1,138 @@
+clusters:
+  service_hubs:
+    - url: /ai-automation
+      name: "AI Automation"
+    - url: /ai-chatbot
+      name: "AI Chatbot"
+    - url: /accounting-automation
+      name: "Accounting Automation"
+    - url: /whatsapp-automation
+      name: "WhatsApp Automation"
+
+  country_pages:
+    - url: /ai-automation-malaysia
+      country: "Malaysia"
+      currency: "MYR"
+      tax: "SST"
+      brand: "Speedbots"
+    - url: /ai-chatbot-malaysia
+      country: "Malaysia"
+      currency: "MYR"
+      tax: "SST"
+      brand: "Speedbots"
+    - url: /ai-automation-singapore
+      country: "Singapore"
+      currency: "SGD"
+      tax: "GST"
+      brand: "Speedbots"
+    - url: /ai-chatbot-singapore
+      country: "Singapore"
+      currency: "SGD"
+      tax: "GST"
+      brand: "Speedbots"
+    - url: /ai-automation-australia
+      country: "Australia"
+      currency: "AUD"
+      tax: "BAS"
+      brand: "Speedbots"
+    - url: /ai-chatbot-australia
+      country: "Australia"
+      currency: "AUD"
+      tax: "BAS"
+      brand: "Speedbots"
+    - url: /ai-automation-coimbatore
+      country: "India (Tamil Nadu)"
+      currency: "INR"
+      tax: "GST"
+      brand: "Speedbots"
+    - url: /ai-chatbot-coimbatore
+      country: "India (Tamil Nadu)"
+      currency: "INR"
+      tax: "GST"
+      brand: "Speedbots"
+
+  industry_pages:
+    - url: /ai-automation-healthcare
+      industry: "Healthcare"
+    - url: /ai-automation-manufacturing
+      industry: "Manufacturing"
+    - url: /ai-automation-logistics
+      industry: "Logistics"
+    - url: /ai-automation-accounting-firms
+      industry: "Accounting Firms"
+    - url: /ai-automation-education
+      industry: "Education"
+    - url: /ai-chatbot-healthcare
+      industry: "Healthcare"
+    - url: /ai-chatbot-manufacturing
+      industry: "Manufacturing"
+    - url: /ai-chatbot-logistics
+      industry: "Logistics"
+    - url: /ai-chatbot-accounting-firms
+      industry: "Accounting Firms"
+    - url: /ai-chatbot-education
+      industry: "Education"
+
+  solution_pages:
+    - url: /ai-invoice-processing
+      solution: "AI Invoice Processing"
+    - url: /ai-reconciliation
+      solution: "AI Bank Reconciliation"
+    - url: /ai-appointment-booking
+      solution: "AI Appointment Booking"
+    - url: /ai-customer-support
+      solution: "AI Customer Support"
+    - url: /ai-document-processing
+      solution: "AI Document Processing"
+    - url: /ai-inventory-management
+      solution: "AI Inventory Management"
+    - url: /ai-lead-scoring
+      solution: "AI Lead Scoring"
+    - url: /ai-email-automation
+      solution: "AI Email Automation"
+    - url: /ai-reporting
+      solution: "AI Reporting"
+    - url: /ai-compliance-checking
+      solution: "AI Compliance Checking"
+
+priority_topics:
+  month_1:
+    - keyword: "Best AI Automation Company in Malaysia"
+      cluster: country_pages
+      url: /ai-automation-malaysia
+    - keyword: "AI Automation for Accounting Firms"
+      cluster: industry_pages
+      url: /ai-automation-accounting-firms
+    - keyword: "WhatsApp AI Chatbot for Businesses"
+      cluster: solution_pages
+      url: /ai-chatbot-whatsapp
+    - keyword: "AI Invoice Processing"
+      cluster: solution_pages
+      url: /ai-invoice-processing
+    - keyword: "AI Bank Reconciliation"
+      cluster: solution_pages
+      url: /ai-reconciliation
+    - keyword: "AI Automation Singapore"
+      cluster: country_pages
+      url: /ai-automation-singapore
+    - keyword: "AI Chatbot Healthcare Malaysia"
+      cluster: industry_pages
+      url: /ai-chatbot-healthcare
+    - keyword: "AI Appointment Booking"
+      cluster: solution_pages
+      url: /ai-appointment-booking
+    - keyword: "AI Automation Australia"
+      cluster: country_pages
+      url: /ai-automation-australia
+    - keyword: "AI Document Processing"
+      cluster: solution_pages
+      url: /ai-document-processing
+    - keyword: "AI Customer Support Chatbot"
+      cluster: solution_pages
+      url: /ai-customer-support
+    - keyword: "AI Automation Coimbatore"
+      cluster: country_pages
+      url: /ai-automation-coimbatore
+
+brand_name: "Speedbots"
+tagline: "AI Automation That Works While You Sleep"

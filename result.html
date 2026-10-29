@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Ready | Speedbots</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f1f5f9; min-height: 100vh; padding: 24px; color: #0f172a;
+    }
+    .topbar {
+      background: #0f172a; color: #fff; border-radius: 12px; padding: 18px 24px;
+      display: flex; align-items: center; justify-content: space-between; max-width: 960px;
+      margin: 0 auto 24px; flex-wrap: wrap; gap: 12px;
+    }
+    .topbar .logo { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #60a5fa; }
+    .topbar .actions { display: flex; gap: 10px; }
+    .btn {
+      background: #2563eb; color: #fff; border: none; padding: 10px 16px; border-radius: 8px;
+      font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
+    }
+    .btn.secondary { background: #334155; }
+    .btn:hover { filter: brightness(1.1); }
+    .meta {
+      max-width: 960px; margin: 0 auto 16px; display: flex; gap: 16px; color: #64748b; font-size: 14px;
+      flex-wrap: wrap;
+    }
+    .meta b { color: #0f172a; }
+    .blog {
+      max-width: 960px; margin: 0 auto; background: #fff; border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08); padding: 40px 48px;
+      font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.7; overflow-wrap: break-word;
+      white-space: normal;
+    }
+    .blog strong { font-weight: 700; }
+    .blog a.blog-link {
+      color: #1d4ed8; background: #eff6ff; text-decoration: underline;
+      font-weight: 700; padding: 1px 5px; border-radius: 4px;
+      border: 1px solid #bfdbfe;
+    }
+    .blog a.blog-link:hover { background: #bfdbfe; color: #1e3a8a; }
+    .blog .hero-img {
+      width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;
+      margin: 0 0 20px; border: 1px solid #e2e8f0; display: block;
+    }
+    .empty { color: #b91c1c; background: #fef2f2; border: 1px solid #fecaca; padding: 12px; border-radius: 8px; }
+    .report-title { max-width: 960px; margin: 32px auto 8px; font-size: 15px; font-weight: 700; color: #334155; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">SPEEDBOTS · CONTENT AGENT</div>
+    <div class="actions">
+      <a class="btn secondary" href="/">New blog</a>
+      <a class="btn secondary" href="/history">History</a>
+      <a class="btn" href="/download/{{ job_id }}">Download Word (.docx)</a>
+    </div>
+  </div>
+
+  <div class="meta">
+    <span>Keyword: <b>{{ job.keyword }}</b></span>
+    <span>Country: <b>{{ job.country }}</b></span>
+    <span>Words: <b>{{ job.words }}</b></span>
+  </div>
+
+  <div class="blog">
+    {% if job.image %}<img class="hero-img" src="/image/{{ job_id }}" alt="AI-generated image for {{ job.keyword }}">{% endif %}
+    {% if job.blog %}{{ job.blog | blog }}{% else %}<div class="empty">Blog content not available.</div>{% endif %}
+  </div>
+</body>
+</html>

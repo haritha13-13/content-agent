@@ -1,0 +1,150 @@
+service_hub_pages:
+  /ai-automation:
+    title: "AI Automation Services"
+    description: "End-to-end AI automation for business processes"
+    related_solutions:
+      - /ai-invoice-processing
+      - /ai-reconciliation
+      - /ai-document-processing
+      - /ai-reporting
+    related_industries:
+      - /ai-automation-healthcare
+      - /ai-automation-manufacturing
+      - /ai-automation-logistics
+      - /ai-automation-accounting-firms
+      - /ai-automation-education
+
+  /ai-chatbot:
+    title: "AI Chatbot Solutions"
+    description: "Intelligent chatbots for customer support and lead generation"
+    related_solutions:
+      - /ai-customer-support
+      - /ai-appointment-booking
+      - /ai-lead-scoring
+    related_industries:
+      - /ai-chatbot-healthcare
+      - /ai-chatbot-manufacturing
+      - /ai-chatbot-logistics
+      - /ai-chatbot-accounting-firms
+      - /ai-chatbot-education
+
+  /accounting-automation:
+    title: "Accounting Automation"
+    description: "AI-powered accounting workflow automation"
+    related_solutions:
+      - /ai-invoice-processing
+      - /ai-reconciliation
+      - /ai-reporting
+    related_industries:
+      - /ai-automation-accounting-firms
+
+  /whatsapp-automation:
+    title: "WhatsApp Automation"
+    description: "Automate WhatsApp business communications with AI"
+    related_solutions:
+      - /ai-customer-support
+      - /ai-appointment-booking
+      - /ai-lead-scoring
+
+solution_pages:
+  /ai-invoice-processing:
+    title: "AI Invoice Processing"
+    description: "Automate invoice data extraction, validation, and processing"
+    links_to_hub: /accounting-automation
+    links_to_hub_2: /ai-automation
+
+  /ai-reconciliation:
+    title: "AI Bank Reconciliation"
+    description: "Automate bank statement matching and reconciliation"
+    links_to_hub: /accounting-automation
+
+  /ai-appointment-booking:
+    title: "AI Appointment Booking"
+    description: "Automate scheduling with AI-powered booking"
+    links_to_hub: /ai-chatbot
+
+  /ai-customer-support:
+    title: "AI Customer Support"
+    description: "AI-powered customer service automation"
+    links_to_hub: /ai-chatbot
+
+  /ai-document-processing:
+    title: "AI Document Processing"
+    description: "Extract and process data from any document format"
+    links_to_hub: /ai-automation
+
+  /ai-inventory-management:
+    title: "AI Inventory Management"
+    description: "Automate inventory tracking and optimization"
+    links_to_hub: /ai-automation
+
+  /ai-lead-scoring:
+    title: "AI Lead Scoring"
+    description: "Score and qualify leads automatically"
+    links_to_hub: /ai-chatbot
+
+  /ai-email-automation:
+    title: "AI Email Automation"
+    description: "Automate email responses and campaigns"
+    links_to_hub: /ai-chatbot
+
+  /ai-reporting:
+    title: "AI Reporting"
+    description: "Automate financial and business reporting"
+    links_to_hub: /ai-automation
+
+  /ai-compliance-checking:
+    title: "AI Compliance Checking"
+    description: "Automate regulatory compliance validation"
+    links_to_hub: /ai-automation
+
+industry_pages:
+  /ai-automation-healthcare:
+    title: "AI Automation for Healthcare"
+    description: "Streamline healthcare operations with AI"
+    links_to_hub: /ai-automation
+
+  /ai-automation-manufacturing:
+    title: "AI Automation for Manufacturing"
+    description: "Optimize manufacturing with intelligent automation"
+    links_to_hub: /ai-automation
+
+  /ai-automation-logistics:
+    title: "AI Automation for Logistics"
+    description: "Automate logistics workflows and tracking"
+    links_to_hub: /ai-automation
+
+  /ai-automation-accounting-firms:
+    title: "AI Automation for Accounting Firms"
+    description: "Transform accounting firm operations with AI"
+    links_to_hub: /accounting-automation
+
+  /ai-automation-education:
+    title: "AI Automation for Education"
+    description: "Automate administrative tasks in education"
+    links_to_hub: /ai-automation
+
+  /ai-chatbot-healthcare:
+    title: "AI Chatbot for Healthcare"
+    description: "Patient support and appointment booking chatbots"
+    links_to_hub: /ai-chatbot
+
+  /ai-chatbot-manufacturing:
+    title: "AI Chatbot for Manufacturing"
+    description: "Supplier and operations support chatbots"
+    links_to_hub: /ai-chatbot
+
+  /ai-chatbot-logistics:
+    title: "AI Chatbot for Logistics"
+    description: "Shipment tracking and customer support chatbots"
+    links_to_hub: /ai-chatbot
+
+  /ai-chatbot-accounting-firms:
+    title: "AI Chatbot for Accounting Firms"
+    description: "Client communication chatbots for accounting"
+    links_to_hub: /ai-chatbot
+
+  /ai-chatbot-education:
+    title: "AI Chatbot for Education"
+    description: "Student support and inquiry chatbots"
+    links_to_hub: /ai-chatbot

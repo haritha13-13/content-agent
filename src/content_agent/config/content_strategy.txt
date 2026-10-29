@@ -1,0 +1,53 @@
+Speedbots Content Strategy
+
+Speedbots is an AI automation company serving Malaysia, Singapore, Australia, and Coimbatore (Tamil Nadu, India).
+Our services include AI automation, chatbots, AI agents, and workflow automation.
+
+TARGET MARKETS:
+- Malaysia: currency MYR, tax system SST, popular tools Xero/QuickBooks/MYOB
+- Singapore: currency SGD, tax system GST (9%), popular tools Xero/QuickBooks/SAP
+- Australia: currency AUD, tax system BAS/GST (10%), popular tools Xero/QuickBooks/MYOB
+- Coimbatore: currency INR, tax system GST, popular tools Tally/Zoho Books
+
+CORE CONTENT MODEL:
+We build topic clusters, not isolated pages. The hierarchy is:
+Service Hubs (4) -> Country Pages (8) -> Industry Pages (10) -> Solution Pages (10)
+Every article links back to its parent hub page.
+
+SERVICE HUBS:
+- /ai-automation
+- /ai-chatbot
+- /accounting-automation
+- /whatsapp-automation
+
+SOLUTION PAGES:
+- /ai-invoice-processing
+- /ai-reconciliation
+- /ai-appointment-booking
+- /ai-customer-support
+- /ai-document-processing
+
+ARTICLE FORMULA (9 STEPS):
+1. Direct answer (80-120 words) - define topic, include keyword, state value proposition
+2. Business problem (300-500 words) - describe 3-4 manual pain points with specific numbers
+3. Real-world workflows (400-600 words) - before/after automation flows with metrics
+4. Implementation steps (300-500 words) - 6 practical steps starting with audit
+5. Cost factors (200-400 words) - tables for what you pay vs what you save
+6. Risks and controls (200-400 words) - 5 risks with mitigations (build trust)
+7. Case example (200-300 words) - realistic company with measurable results
+8. FAQ (300-500 words) - 6-8 questions with specific answers
+9. Specific CTA (50-100 words) - book workflow assessment, never generic "contact us"
+
+TOTAL WORD COUNT: 2000-3000 words
+
+SEO RULES:
+- Title format: "Primary Keyword | Secondary Keyword | Speedbots" (max 60 chars)
+- Meta description: "Speedbots provides X, Y, and Z to streamline operations across Country1, Country2, Country3" (max 160 chars)
+- Keyword density: primary 1-2%, secondary 0.5-1%
+- Internal links: 2-5 per post, must link to parent cluster page
+- FAQ schema: 8 questions
+- Exactly one H1 with primary keyword
+
+CALL TO ACTION:
+Always end with a specific CTA: "Book a free workflow assessment" or "Get your cost estimate" or "Schedule a demo"
+Never use generic "contact us" or "learn more".

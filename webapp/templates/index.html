@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speedbots Content Generator</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: #0f172a;
+    }
+    .card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 640px;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      padding: 40px;
+    }
+    .logo { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #2563eb; text-transform: uppercase; }
+    h1 { font-size: 28px; margin: 8px 0 6px; }
+    p.sub { color: #64748b; margin-bottom: 28px; font-size: 15px; }
+    label { display: block; font-weight: 600; font-size: 14px; margin: 18px 0 6px; }
+    input[type="text"], select, textarea {
+      width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1;
+      border-radius: 8px; font-size: 15px; font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus { outline: 2px solid #2563eb; border-color: transparent; }
+    .hint { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+    button {
+      width: 100%; margin-top: 24px; padding: 14px; border: none; border-radius: 8px;
+      background: #2563eb; color: #fff; font-size: 16px; font-weight: 700; cursor: pointer;
+    }
+    button:hover { background: #1d4ed8; }
+    .examples { margin-top: 20px; font-size: 13px; color: #64748b; }
+    .examples button {
+      all: unset; color: #2563eb; cursor: pointer; text-decoration: underline; font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">Speedbots</div>
+    <h1>AI Content Generator</h1>
+    <p class="sub">Enter a keyword and country to generate a full blog post with internal links.</p>
+
+    <form action="/generate" method="POST" onsubmit="beforeSubmit()">
+      <label for="keyword">Keyword (topic)</label>
+      <input type="text" id="keyword" name="keyword" placeholder="e.g. AI invoice processing"
+             value="" required>
+      <p class="hint">The topic of the blog. The pipeline identifies its content cluster automatically.</p>
+
+      <label for="country">Target Country / Region</label>
+      <label class="check" style="font-weight:500; display:flex; align-items:center; gap:8px; margin:0 0 6px;">
+        <input type="checkbox" id="worldwide" onchange="toggleWorldwide()">
+        All over the world
+        <span class="mini" style="font-size:12px; color:#94a3b8;">(currency will be USD)</span>
+      </label>
+      <select id="country" name="country">
+        {% for c in countries %}
+        <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="subtopics">Sub-topics Structure</label>
+      <select id="subtopics" name="subtopics">
+        <option value="basics">Set D — Basics Guide (beginner-friendly)</option>
+        <option value="ai">AI-Generated (auto)</option>
+        <option value="standard">Set A — Standard Workflow Guide</option>
+        <option value="roi">Set B — ROI &amp; Business Case</option>
+        <option value="educational">Set C — Educational Step-by-Step Guide</option>
+      </select>
+      <p class="hint">Pick the blog outline. "Set D — Basics Guide" writes a beginner-friendly basics guide (what it is, types, what to look for, pricing and packages, how to choose, FAQ) with no ROI, risk, use-case or tax sections. "AI-Generated" lets the writer choose its own sub-topics (USE CASES + FAQ stay mandatory).</p>
+
+      <label for="internal_links">Internal Links (optional)</label>
+      <textarea id="internal_links" name="internal_links" rows="3"
+                placeholder="https://speedbots.com/ai-invoice-processing&#10;https://speedbots.com/accounting-automation&#10;One URL per line"></textarea>
+      <p class="hint">Leave empty to let the strategy automatically pick 2-5 relevant internal links.</p>
+
+      <button type="submit">Generate Blog</button>
+    </form>
+
+    <div class="examples">
+      Try: <button onclick="fill('WhatsApp AI chatbot for businesses')">WhatsApp AI chatbot</button> ·
+      <button onclick="fill('AI automation for healthcare')">AI automation for healthcare</button> ·
+      <button onclick="fill('AI bank reconciliation')">AI bank reconciliation</button>
+      <br><br>
+      <a href="/history" style="color:#2563eb; font-weight:600;">View blog history →</a>
+    </div>
+  </div>
+
+  <script>
+    function fill(kw) { document.getElementById('keyword').value = kw; }
+    function toggleWorldwide() {
+      const cb = document.getElementById('worldwide');
+      const sel = document.getElementById('country');
+      sel.disabled = cb.checked;
+      if (cb.checked) sel.value = 'All over the world';
+    }
+    function beforeSubmit() {
+      const sel = document.getElementById('country');
+      if (sel.disabled) sel.disabled = false;  // ensure the value is submitted
+    }
+  </script>
+</body>
+</html>

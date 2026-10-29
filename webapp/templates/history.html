@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog History | Speedbots</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f1f5f9; min-height: 100vh; padding: 24px; color: #0f172a;
+    }
+    .topbar {
+      background: #0f172a; color: #fff; border-radius: 12px; padding: 18px 24px;
+      display: flex; align-items: center; justify-content: space-between; max-width: 960px;
+      margin: 0 auto 24px; flex-wrap: wrap; gap: 12px;
+    }
+    .topbar .logo { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #60a5fa; }
+    .btn {
+      background: #2563eb; color: #fff; border: none; padding: 10px 16px; border-radius: 8px;
+      font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
+    }
+    .btn.secondary { background: #334155; }
+    .btn:hover { filter: brightness(1.1); }
+    .grid {
+      max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .card .thumb { width: 100%; height: 150px; object-fit: cover; background: #e2e8f0; display: block; }
+    .card .body { padding: 16px; }
+    .card h3 { font-size: 15px; line-height: 1.35; margin-bottom: 8px; }
+    .card .meta { font-size: 13px; color: #64748b; margin-bottom: 12px; }
+    .card .actions { display: flex; gap: 8px; }
+    .empty {
+      max-width: 960px; margin: 40px auto; text-align: center; color: #64748b;
+      background: #fff; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">SPEEDBOTS · CONTENT AGENT</div>
+    <div class="actions">
+      <a class="btn secondary" href="/">New blog</a>
+      <a class="btn" href="/history">Blog History</a>
+    </div>
+  </div>
+
+  {% if blogs %}
+  <div class="grid">
+    {% for b in blogs %}
+    <div class="card">
+      {% if b.image %}<img class="thumb" src="/image/{{ b.slug }}" alt="">{% endif %}
+      <div class="body">
+        <h3>{{ b.title }}</h3>
+        <div class="meta">{{ b.words }} words · {{ b.mtime }}</div>
+        <div class="actions">
+          <a class="btn secondary" href="/view/{{ b.slug }}">View</a>
+          <a class="btn" href="/download/{{ b.slug }}">Download .docx</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty">No blogs generated yet. <a href="/">Create your first blog</a>.</div>
+  {% endif %}
+</body>
+</html>

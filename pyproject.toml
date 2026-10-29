@@ -1,0 +1,24 @@
+[project]
+name = "content_agent"
+version = "0.1.0"
+description = "AI-powered content generation agent using CrewAI"
+authors = [{ name = "Haritha", email = "haritha2003313@gmail.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.14.7",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+content_agent = "content_agent.main:run"
+run_crew = "content_agent.main:run"
+train = "content_agent.main:train"
+replay = "content_agent.main:replay"
+test = "content_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
